@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.585.0",
+    "axios": "^1.7.0",
+    "jose": "^4.15.5",
+    "jsonwebtoken": "^9.0.2",
+    "md5": "^2.3.0"
+  }
+}
