@@ -203,7 +203,7 @@ export const handler = async (event) => {
         console.error('error in ch-member-signin ' + random10DigitNumber, e);
     
         const message = {
-            Subject: 'Honda Cardano Error - ch-member-signin - ' + random10DigitNumber,
+            Subject: 'Cardano Error - ch-member-signin - ' + random10DigitNumber,
             Message: `Error in ch-member-signin  ${e.message}\n\nStack trace:\n${e.stack}`,
             TopicArn: configs.find(x=>x.key == 'SNS_TOPIC_ERROR').value
         };
