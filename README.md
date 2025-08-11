@@ -1,4 +1,4 @@
-# Virtual Car Club NFT Platform (CIP-68 + Web3Auth)
+# Aurora Synex Car Club NFT Platform (CIP-68 + Web3Auth)
 
 A dynamic NFT platform built on the Cardano blockchain using **CIP-68**, enabling upgradeable **Membership NFTs** and customizable **Virtual Car NFTs**. This project showcases real-world utility for NFTs on Cardano — complete with admin tools, Web3Auth wallet login, and an active community on Discord.
 
