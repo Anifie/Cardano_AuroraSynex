@@ -111,12 +111,12 @@ export const handler = async (event) => {
         //     };
         // }
 
-        // if(body.whiteListType !== 'WHITELIST_MEMBER_BRONZE_PALEBLUEDOT' 
-        //     && body.whiteListType !== 'WHITELIST_MEMBER_BRONZE_METAGARAGE' 
-        //     && body.whiteListType !== 'WHITELIST_MEMBER_SILVER_PALEBLUEDOT'
-        //     && body.whiteListType !== 'WHITELIST_MEMBER_SILVER_METAGARAGE'
-        //     && body.whiteListType !== 'WHITELIST_MEMBER_GOLD_PALEBLUEDOT'
-        //     && body.whiteListType !== 'WHITELIST_MEMBER_GOLD_METAGARAGE') {
+        // if(body.whiteListType !== 'WHITELIST_MEMBER_BRONZE_LITTLEBLUE' 
+        //     && body.whiteListType !== 'WHITELIST_MEMBER_BRONZE_METAFORGE' 
+        //     && body.whiteListType !== 'WHITELIST_MEMBER_SILVER_LITTLEBLUE'
+        //     && body.whiteListType !== 'WHITELIST_MEMBER_SILVER_METAFORGE'
+        //     && body.whiteListType !== 'WHITELIST_MEMBER_GOLD_LITTLEBLUE'
+        //     && body.whiteListType !== 'WHITELIST_MEMBER_GOLD_METAFORGE') {
         //         return {
         //             Success: false,
         //             Message: "Invalid whiteListType"
@@ -153,12 +153,12 @@ export const handler = async (event) => {
                 }
             }
 
-            if(row.WhiteListType !== 'WHITELIST_MEMBER_BRONZE_PALEBLUEDOT' 
-                && row.WhiteListType !== 'WHITELIST_MEMBER_BRONZE_METAGARAGE' 
-                && row.WhiteListType !== 'WHITELIST_MEMBER_SILVER_PALEBLUEDOT'
-                && row.WhiteListType !== 'WHITELIST_MEMBER_SILVER_METAGARAGE'
-                && row.WhiteListType !== 'WHITELIST_MEMBER_GOLD_PALEBLUEDOT'
-                && row.WhiteListType !== 'WHITELIST_MEMBER_GOLD_METAGARAGE') {
+            if(row.WhiteListType !== 'WHITELIST_MEMBER_BRONZE_LITTLEBLUE' 
+                && row.WhiteListType !== 'WHITELIST_MEMBER_BRONZE_METAFORGE' 
+                && row.WhiteListType !== 'WHITELIST_MEMBER_SILVER_LITTLEBLUE'
+                && row.WhiteListType !== 'WHITELIST_MEMBER_SILVER_METAFORGE'
+                && row.WhiteListType !== 'WHITELIST_MEMBER_GOLD_LITTLEBLUE'
+                && row.WhiteListType !== 'WHITELIST_MEMBER_GOLD_METAFORGE') {
                     console.log("Invalid WhiteListType for row number " + (i+1));
                     return {
                         Success: false,

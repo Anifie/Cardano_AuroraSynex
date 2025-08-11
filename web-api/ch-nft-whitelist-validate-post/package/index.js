@@ -213,43 +213,43 @@ export const handler = async (event) => {
         let award;
         let isWinner = false;
 
-        let sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'WHITELIST_MEMBER_SILVER_PALEBLUEDOT'`;
+        let sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'WHITELIST_MEMBER_SILVER_LITTLEBLUE'`;
         console.log("sql", sql);
         let whiteListASilverResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
-        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'WHITELIST_MEMBER_GOLD_PALEBLUEDOT'`;
+        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'WHITELIST_MEMBER_GOLD_LITTLEBLUE'`;
         console.log("sql", sql);
         let whiteListAGoldResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
-        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'WHITELIST_MEMBER_SILVER_METAGARAGE'`;
+        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'WHITELIST_MEMBER_SILVER_METAFORGE'`;
         console.log("sql", sql);
         let whiteListBSilverResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
-        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'WHITELIST_MEMBER_GOLD_METAGARAGE'`;
+        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'WHITELIST_MEMBER_GOLD_METAFORGE'`;
         console.log("sql", sql);
         let whiteListBGoldResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
-        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'PALEBLUEDOT_WINNER_AWARD_PALEBLUEDOT'`;
+        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'LITTLEBLUE_WINNER_AWARD_LITTLEBLUE'`;
         console.log("sql", sql);
-        let awardPaleBlueDotResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
+        let awardLittleBlueResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
-        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'PALEBLUEDOT_WINNER_AWARD_FINANCIE'`;
+        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'LITTLEBLUE_WINNER_AWARD_FINANCIE'`;
         console.log("sql", sql);
         let awardFinancieResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
-        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'PALEBLUEDOT_WINNER_AWARD_MIZUNOSHINYA'`;
+        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'LITTLEBLUE_WINNER_AWARD_MIZUNOSHINYA'`;
         console.log("sql", sql);
         let awardMizunoResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
-        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'PALEBLUEDOT_WINNER_AWARD_HONDA_1'`;
+        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'LITTLEBLUE_WINNER_AWARD_AURORA_1'`;
         console.log("sql", sql);
         let awardHonda1Result = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
-        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'PALEBLUEDOT_WINNER_AWARD_HONDA_2'`;
+        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'LITTLEBLUE_WINNER_AWARD_AURORA_2'`;
         console.log("sql", sql);
         let awardHonda2Result = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
-        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'PALEBLUEDOT_WINNER_AWARD_HONDA_3'`;
+        sql = `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST' and whitelist_type = 'LITTLEBLUE_WINNER_AWARD_AURORA_3'`;
         console.log("sql", sql);
         let awardHonda3Result = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
 
@@ -268,7 +268,7 @@ export const handler = async (event) => {
         for (let i = 0; i < membershipNFTs.length; i++) {
             const memberNFT = membershipNFTs[i];
             console.log("memberNFT", memberNFT);
-            if(memberNFT.store_id == 'HONDA_MEMBERSHIP_A') {
+            if(memberNFT.store_id == 'AURORA_MEMBERSHIP_A') {
                 if(memberNFT.is_gold === true) {
                     AStatus = 'GOLD'
                 }
@@ -279,7 +279,7 @@ export const handler = async (event) => {
                     AStatus = 'BRONZE'
                 }
             }
-            else if(memberNFT.store_id == 'HONDA_MEMBERSHIP_B') {
+            else if(memberNFT.store_id == 'AURORA_MEMBERSHIP_B') {
                 if(memberNFT.is_gold === true) {
                     BStatus = 'GOLD'
                 }
@@ -292,8 +292,8 @@ export const handler = async (event) => {
             }
         }
 
-        if(awardPaleBlueDotResult.Items.length > 0) {
-            award = 'PALEBLUEDOT';
+        if(awardLittleBlueResult.Items.length > 0) {
+            award = 'LITTLEBLUE';
             isWinner = true;
         }
         else if(awardFinancieResult.Items.length > 0) {

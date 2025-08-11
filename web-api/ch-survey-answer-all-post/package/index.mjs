@@ -321,7 +321,7 @@ export const handler = async (event) => {
 
                         // update member campagin code
                         if(!member.campaign_code) {
-                            let project = (body.surveyId == process.env.CAMPAIGN_CODE_SURVEY_ID_A ? 'PALEBLUEDOT' : 'METAGARAGE');
+                            let project = (body.surveyId == process.env.CAMPAIGN_CODE_SURVEY_ID_A ? 'LITTLEBLUE' : 'METAFORGE');
 
                             sqlUpdateMember = ` campaign_code = '${answer.offeredAnswerText}', campaign_code_project = '${project}' `;
                             // txStatements.push({ "Statement": sql });

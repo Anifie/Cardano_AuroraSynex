@@ -111,14 +111,14 @@ export const handler = async (event) => {
             };
         }
 
-        if(body.whiteListType !== 'WHITELIST_MEMBER_BRONZE_PALEBLUEDOT' 
-            && body.whiteListType !== 'WHITELIST_MEMBER_BRONZE_METAGARAGE' 
-            && body.whiteListType !== 'WHITELIST_MEMBER_SILVER_PALEBLUEDOT'
-            && body.whiteListType !== 'WHITELIST_MEMBER_SILVER_METAGARAGE'
-            && body.whiteListType !== 'WHITELIST_MEMBER_GOLD_PALEBLUEDOT'
-            && body.whiteListType !== 'WHITELIST_MEMBER_GOLD_METAGARAGE'
-            && body.whiteListType !== 'PALEBLUEDOT_ADDITIONAL_NFT'
-            && !body.whiteListType.includes('PALEBLUEDOT_WINNER_')
+        if(body.whiteListType !== 'WHITELIST_MEMBER_BRONZE_LITTLEBLUE' 
+            && body.whiteListType !== 'WHITELIST_MEMBER_BRONZE_METAFORGE' 
+            && body.whiteListType !== 'WHITELIST_MEMBER_SILVER_LITTLEBLUE'
+            && body.whiteListType !== 'WHITELIST_MEMBER_SILVER_METAFORGE'
+            && body.whiteListType !== 'WHITELIST_MEMBER_GOLD_LITTLEBLUE'
+            && body.whiteListType !== 'WHITELIST_MEMBER_GOLD_METAFORGE'
+            && body.whiteListType !== 'LITTLEBLUE_ADDITIONAL_NFT'
+            && !body.whiteListType.includes('LITTLEBLUE_WINNER_')
         ) {
                 return {
                     Success: false,
@@ -188,11 +188,11 @@ export const handler = async (event) => {
             }
         }
 
-        if(body.whiteListType.includes('PALEBLUEDOT_WINNER_')) {
+        if(body.whiteListType.includes('LITTLEBLUE_WINNER_')) {
             sql = `select * from "${tableName}"."InvertedIndex" where type = 'WHITELIST' and SK = '${member.PK}'`;
             let existingWhiteListResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
             let whitelists = existingWhiteListResult.Items.map(unmarshall);
-            if(whitelists.find(x => x.whitelist_type.includes('PALEBLUEDOT_WINNER_'))) {
+            if(whitelists.find(x => x.whitelist_type.includes('LITTLEBLUE_WINNER_'))) {
                 return {
                     Success: false,
                     Message: 'Only 1 award can be assign to 1 member'

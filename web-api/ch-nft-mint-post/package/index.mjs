@@ -345,9 +345,9 @@ const CAR_LICENSE_PLATE = {
     common__synergylab: "SYNERGY LAB",
     common__synergylab_black: "SYNERGY LAB BLACK",
     common__synergylab_white: "SYNERGY LAB WHITE",
-    common__METAGARAGE_black: "METAGARAGE BLACK",
-    common__METAGARAGE_white: "METAGARAGE WHITE",
-    common__METAGARAGE: "METAGARAGE",
+    common__METAFORGE_black: "METAFORGE BLACK",
+    common__METAFORGE_white: "METAFORGE WHITE",
+    common__METAFORGE: "METAFORGE",
     common__PBD: "PBD",
     civic__black: "BLACK",
     civic__white: "WHITE",
@@ -960,19 +960,19 @@ export const handler = async (event) => {
             // };
             switch(body.nftType) {
                 case 'CAR':
-                    body.storeId = 'HONDA_CAR';
+                    body.storeId = 'AURORA_CAR';
                     break;
                 case 'CHARACTER':
-                    body.storeId = 'HONDA_CHARACTER';
+                    body.storeId = 'AURORA_CHARACTER';
                     break;
                 case 'MEMBER_A':
-                    body.storeId = 'HONDA_MEMBERSHIP_A';
+                    body.storeId = 'AURORA_MEMBERSHIP_A';
                     break;
                 case 'MEMBER_B':
-                    body.storeId = 'HONDA_MEMBERSHIP_B';
+                    body.storeId = 'AURORA_MEMBERSHIP_B';
                     break;
                 case 'RACINGFAN':
-                    body.storeId = 'HONDA_RACINGFAN';
+                    body.storeId = 'AURORA_RACINGFAN';
                     break;
                 default:
                     break
@@ -1139,19 +1139,19 @@ export const handler = async (event) => {
 
                 if(body.nftType == 'CAR') {
 
-                    if(!member.survey_completed.includes(process.env.SURVEY_ID_A) && !member.survey_completed.includes(process.env.SURVEY_ID_B) && !member.survey_completed.includes(process.env.SURVEY_ID_B_CAR_MINTING)) {
-                        console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
-                        return {
-                            Success: false,
-                            Message: 'メンバーは関連するアンケートをまだ完了していません。'
-                        }
-                    }
+                    // if(!member.survey_completed.includes(process.env.SURVEY_ID_A) && !member.survey_completed.includes(process.env.SURVEY_ID_B) && !member.survey_completed.includes(process.env.SURVEY_ID_B_CAR_MINTING)) {
+                    //     console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
+                    //     return {
+                    //         Success: false,
+                    //         Message: 'メンバーは関連するアンケートをまだ完了していません。'
+                    //     }
+                    // }
 
                     if(parseInt(carDesc) >= 8000) {
-                        console.log("All MetaGarage NFT have been minted . すべてのMETAGARAGE NFTがミントされました。");
+                        console.log("All MetaForge NFT have been minted . すべてのMETAFORGE NFTがミントされました。");
                         return {
                             Success: false,
-                            Message: "すべてのMETAGARAGE NFTがミントされました。"
+                            Message: "すべてのMETAFORGE NFTがミントされました。"
                         }
                     }
 
@@ -1164,10 +1164,10 @@ export const handler = async (event) => {
 
                         if(ownerResult.Success) {
                             if(ownerResult.Data.owner != member.wallet_address){
-                                console.log("User is not member of MetaGarage. ユーザーはMETAGARAGEのメンバーではありません。");
+                                console.log("User is not member of MetaForge. ユーザーはMETAFORGEのメンバーではありません。");
                                 return {
                                     Success: false,
-                                    Message: "ユーザーはMETAGARAGEのメンバーではありません。"
+                                    Message: "ユーザーはMETAFORGEのメンバーではありません。"
                                 }
                             }
                         }
@@ -1176,10 +1176,10 @@ export const handler = async (event) => {
                         }
                     }
                     else {
-                        console.log("User is not member of MetaGarage. ユーザーはMETAGARAGEのメンバーではありません。");
+                        console.log("User is not member of MetaForge. ユーザーはMETAFORGEのメンバーではありません。");
                         return {
                             Success: false,
-                            Message: "ユーザーはMETAGARAGEのメンバーではありません。"
+                            Message: "ユーザーはMETAFORGEのメンバーではありません。"
                         }
                     }
                     
@@ -1202,7 +1202,7 @@ export const handler = async (event) => {
                             const memberNFT = membershipNFTs[i];
                             console.log("memberNFT", memberNFT);
                             
-                            if(memberNFT.store_id == 'HONDA_MEMBERSHIP_B') {
+                            if(memberNFT.store_id == 'AURORA_MEMBERSHIP_B') {
                                 if(memberNFT.is_gold === true) {
                                     BStatus = 'GOLD'
                                 }
@@ -1229,7 +1229,7 @@ export const handler = async (event) => {
                             
                             return {
                                 Success: false,
-                                Message: 'MetaGarage のメンバーシップ ランキングが無効です'    //Invalid membership ranking for MetaGarage
+                                Message: 'MetaForge のメンバーシップ ランキングが無効です'    //Invalid membership ranking for MetaForge
                             };
                         }
 
@@ -1426,7 +1426,7 @@ export const handler = async (event) => {
                     //         break;
                     //     case "type-r":
                     //         //[{"bonnet":"type1"},{"typer_rear_wing":"type1"},{"typer_bumper":"type1"},{"typer_grille":"type1"},{"material":"original"},{"fender":"type0"},{"tire":"type1"},{"color_Roof":"#151531"},{"color_Body":"#151531"},{"color_Bonnet":"#151531"},{"artworkId":"01J918J0Y6R4SSQC1RRG5F8ZE1"},{"customTexture":null},{"legitTexture":"https://s3.ap-northeast-1.amazonaws.com/anifie.community.resource/images/image_01J85V1GS4X39R8VXE8VG1R4BV.png"}]
-                    //         //[{"artworkId":"01J6GZYYNWK0PW4H2VFRDHR0GH"},{"bonnet":"type2"},{"typer_rear_wing":"type2"},{"typer_bumper":"type3"},{"typer_grille":"type2"},{"material":"original"},{"fender":"type2"},{"tire":"type2"},{"color_Roof":"ffac14.66666668"},{"color_Body":"#ffaf00"},{"color_Bonnet":"ffac14.66666668"},{"mat_Body":"metallic"},{},{"mat_Bonnet":"matte"},{"mat_Roof":"matte"},{"customTexture":null},{"legitTexture":"https://s3.ap-northeast-1.amazonaws.com/anifie.community.resource/images/image_01J85V1GS4X39R8VXE8VG1R4BV.png"},{"plate":"common__METAGARAGE_black"},{"tire_height":1},{"tire_offset":5}]
+                    //         //[{"artworkId":"01J6GZYYNWK0PW4H2VFRDHR0GH"},{"bonnet":"type2"},{"typer_rear_wing":"type2"},{"typer_bumper":"type3"},{"typer_grille":"type2"},{"material":"original"},{"fender":"type2"},{"tire":"type2"},{"color_Roof":"ffac14.66666668"},{"color_Body":"#ffaf00"},{"color_Bonnet":"ffac14.66666668"},{"mat_Body":"metallic"},{},{"mat_Bonnet":"matte"},{"mat_Roof":"matte"},{"customTexture":null},{"legitTexture":"https://s3.ap-northeast-1.amazonaws.com/anifie.community.resource/images/image_01J85V1GS4X39R8VXE8VG1R4BV.png"},{"plate":"common__METAFORGE_black"},{"tire_height":1},{"tire_offset":5}]
                     //         _title = "TYPE-R";
                     //         _metadata = [..._metadata, 
                     //                                     {
@@ -1541,34 +1541,34 @@ export const handler = async (event) => {
                     sql = `update "${tableName}" set modified_date = '${new Date().toISOString()}', enum_description = '${parseInt(carDesc) + 1}' where PK = '${carCounterEnum.PK}' and SK = '${carCounterEnum.SK}' and modified_date = '${carEnumModifiedDate}'`;
                     txStatements.push({ "Statement": sql});
 
-                    body.name = `METAGARAGE 2025 ${_title ? _title : ""} #${nextNftId}`;   //"MetaGarage #" + (parseInt(carDesc) + 1);
-                    body.description = 'Car "METAGARAGE 2025" hosted by Honda Motor Co., Ltd.'; 
+                    body.name = `METAFORGE 2025 ${_title ? _title : ""} #${nextNftId}`;   //"MetaForge #" + (parseInt(carDesc) + 1);
+                    body.description = 'Car "METAFORGE 2025" hosted by Aurora Synex Co., Ltd.'; 
                     // body.name = artwork.name; // can't use artwork name, too long to be accepted by Cardano
                     // body.description = artwork.description;  // can't use artwork description, too long to be accepted by Cardano
                 }
                 else if (body.nftType == 'CHARACTER') {
 
-                    if(!member.survey_completed.includes(process.env.SURVEY_ID_A) && !member.survey_completed.includes(process.env.SURVEY_ID_B)) {
-                        console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
-                        return {
-                            Success: false,
-                            Message: 'メンバーは関連するアンケートをまだ完了していません。'
-                        }
-                    }
+                    // if(!member.survey_completed.includes(process.env.SURVEY_ID_A) && !member.survey_completed.includes(process.env.SURVEY_ID_B)) {
+                    //     console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
+                    //     return {
+                    //         Success: false,
+                    //         Message: 'メンバーは関連するアンケートをまだ完了していません。'
+                    //     }
+                    // }
 
                     if(parseInt(characterDesc) >= 8000) {
-                        console.log("All PaleBlueDot NFT have been minted . すべてのPaleBlueDot. NFTがミントされました。");
+                        console.log("All LittleBlue NFT have been minted . すべてのLittleBlue NFTがミントされました。");
                         return {
                             Success: false,
-                            Message: "すべてのPaleBlueDot. NFTがミントされました。"
+                            Message: "すべてのLittleBlue NFTがミントされました。"
                         }
                     }
 
-                    if(!member.discord_roles.includes('PALEBLUEDOT')){
-                        console.log("User is not member of PaleBlueDot. ユーザーはPaleBlueDot.のメンバーではありません。");
+                    if(!member.discord_roles.includes('LITTLEBLUE')){
+                        console.log("User is not member of LittleBlue ユーザーはLittleBlueのメンバーではありません。");
                         return {
                             Success: false,
-                            Message: "ユーザーはPaleBlueDot.のメンバーではありません。" 
+                            Message: "ユーザーはLittleBlueのメンバーではありません。" 
                         }
                     }
 
@@ -1581,10 +1581,10 @@ export const handler = async (event) => {
 
                         if(ownerResult.Success) {
                             if(ownerResult.Data.owner != member.wallet_address){
-                                console.log("User is not member of PaleBlueDot. ユーザーはPaleBlueDot.のメンバーではありません。");
+                                console.log("User is not member of LittleBlue ユーザーはLittleBlueのメンバーではありません。");
                                 return {
                                     Success: false,
-                                    Message: "ユーザーはPaleBlueDot.のメンバーではありません。"
+                                    Message: "ユーザーはLittleBlueのメンバーではありません。"
                                 }
                             }
                         }
@@ -1593,27 +1593,27 @@ export const handler = async (event) => {
                         }
                     }
                     else {
-                        console.log("User is not member of PaleBlueDot. ユーザーはPaleBlueDot.のメンバーではありません。");
+                        console.log("User is not member of LittleBlue ユーザーはLittleBlueのメンバーではありません。");
                         return {
                             Success: false,
-                            Message: "ユーザーはPaleBlueDot.のメンバーではありません。"
+                            Message: "ユーザーはLittleBlueのメンバーではありません。"
                         }
                     }
 
                     let memberWhitelistResult = await dbClient.send(new ExecuteStatementCommand({Statement: `select * from "${tableName}"."InvertedIndex" where SK = '${member.PK}' and type = 'WHITELIST'`}));
                     console.log("memberWhitelistResult", memberWhitelistResult);
                     let memberWhiteLists = memberWhitelistResult.Items.map(unmarshall);
-                    if(memberWhiteLists.find(x => x.whitelist_type.includes('PALEBLUEDOT_ADDITIONAL_NFT'))) {
-                        // allow  multiple PaleBlueDot content NFT
+                    if(memberWhiteLists.find(x => x.whitelist_type.includes('LITTLEBLUE_ADDITIONAL_NFT'))) {
+                        // allow  multiple LittleBlue content NFT
                     }
                     else {
                         sql = `select * from "${tableName}"."InvertedIndex" where type = 'ASSET' and SK = '${member.SK}' and store_id = '${body.storeId}' and status = 'NOTFORSALE'`;
                         let exitingAssetResult = await dbClient.send(new ExecuteStatementCommand({Statement: sql}));
                         if(exitingAssetResult.Items.length > 0) {
-                            console.log("User already requested PaleBlueDot NFT. ユーザーはすでにPaleBlueDot NFTをリクエストしています。");
+                            console.log("User already requested LittleBlue NFT. ユーザーはすでにLittleBlue NFTをリクエストしています。");
                             return {
                                 Success: false,
-                                Message: "ユーザーはすでにPaleBlueDot NFTをリクエストしています。"
+                                Message: "ユーザーはすでにLittleBlue NFTをリクエストしています。"
                             }
                         }
                     }
@@ -1623,7 +1623,7 @@ export const handler = async (event) => {
                     let _metadata = [
                         {
                             "trait_type": "Project",
-                            "value": "PaleBlueDot."
+                            "value": "LittleBlue"
                         },
                         {
                             "trait_type": "Illustrator",
@@ -1642,14 +1642,14 @@ export const handler = async (event) => {
                     sql = `update "${tableName}" set modified_date = '${new Date().toISOString()}', enum_description = '${parseInt(characterDesc) + 1}' where PK = '${characterCounterEnum.PK}' and SK = '${characterCounterEnum.SK}' and modified_date = '${characterEnumModifiedDate}'`;
                     txStatements.push({ "Statement": sql});
 
-                    //body.name = "PaleBlueDot. #" + (parseInt(characterDesc) + 1);
+                    //body.name = "LittleBlue #" + (parseInt(characterDesc) + 1);
                     if(artwork.artwork_id == process.env.ARTWORK_ID_BLUE_HAIR_CHARACTER) {
                         body.name = `Spica #${nextNftId}`;
-                        body.description = 'An intelligent and calm alien from "PaleBlueDot."';
+                        body.description = 'An intelligent and calm alien from "LittleBlue"';
                     }
                     else if(artwork.artwork_id == process.env.ARTWORK_ID_RED_HAIR_CHARACTER) {
                         body.name = `Capella #${nextNftId}`;
-                        body.description = 'A lively and energetic alien from "PaleBlueDot."';
+                        body.description = 'A lively and energetic alien from "LittleBlue"';
                     }
                 }
 
@@ -1670,43 +1670,43 @@ export const handler = async (event) => {
         else if(body.nftType === 'MEMBER_A') {
             
             if(member.nft_member_a_asset_name) {
-                console.log('Member already own MEMBERSHIP NFT for project PaleBlueDot. ' + member.userId  + " メンバーはすでにプロジェクトPaleBlueDot.のメンバーシップNFTを所有しています。");
+                console.log('Member already own MEMBERSHIP NFT for project LittleBlue ' + member.userId  + " メンバーはすでにプロジェクトLittleBlueのメンバーシップNFTを所有しています。");
                 return {
                     Success: false,
-                    Message: 'メンバーはすでにプロジェクトPaleBlueDot.のメンバーシップNFTを所有しています。'
+                    Message: 'メンバーはすでにプロジェクトLittleBlueのメンバーシップNFTを所有しています。'
                 }
             }
 
-            let attempt = 0;
-            while(true) {
+            // let attempt = 0;
+            // while(true) {
                 
-                if(member.survey_completed)
-                    break;
+            //     if(member.survey_completed)
+            //         break;
 
-                let memberResult = await dbClient.send(new ExecuteStatementCommand({Statement: `SELECT * FROM "${tableName}" WHERE PK = '${member.PK}' and SK = '${member.SK}' and type = 'MEMBER'`}))
-                console.log("memberResult", JSON.stringify(memberResult));
-                if(memberResult.Items.length === 0) {
-                    return {
-                        Success: false,
-                        Message: 'member not found',
-                    };
-                }
-                member = memberResult.Items.map(unmarshall)[0];
+            //     let memberResult = await dbClient.send(new ExecuteStatementCommand({Statement: `SELECT * FROM "${tableName}" WHERE PK = '${member.PK}' and SK = '${member.SK}' and type = 'MEMBER'`}))
+            //     console.log("memberResult", JSON.stringify(memberResult));
+            //     if(memberResult.Items.length === 0) {
+            //         return {
+            //             Success: false,
+            //             Message: 'member not found',
+            //         };
+            //     }
+            //     member = memberResult.Items.map(unmarshall)[0];
 
-                await new Promise(r => setTimeout(r, 10000));   // sleep 10 seconds
-                if(attempt >= 6) {
-                    throw new Error('Retry get survey_completed exceeded max retry attempt');
-                }
-                attempt ++;
-            }
+            //     await new Promise(r => setTimeout(r, 10000));   // sleep 10 seconds
+            //     if(attempt >= 6) {
+            //         throw new Error('Retry get survey_completed exceeded max retry attempt');
+            //     }
+            //     attempt ++;
+            // }
 
-            if(!member.survey_completed.includes(process.env.SURVEY_ID_A) && !member.survey_completed.includes(process.env.SURVEY_ID_B)) {
-                console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
-                return {
-                    Success: false,
-                    Message: 'メンバーは関連するアンケートをまだ完了していません。'
-                }
-            }
+            // if(!member.survey_completed.includes(process.env.SURVEY_ID_A) && !member.survey_completed.includes(process.env.SURVEY_ID_B)) {
+            //     console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
+            //     return {
+            //         Success: false,
+            //         Message: 'メンバーは関連するアンケートをまだ完了していません。'
+            //     }
+            // }
 
             if(member.campaign_code) {
                 console.log("campaign code", member.campaign_code);
@@ -1744,10 +1744,10 @@ export const handler = async (event) => {
                                 throw new Error("Missing rarity Attrribute for membership NFT aseset name " + member.nft_member_b_asset_name);
                             }
                             if(rarity.value === 'Legend') {
-                                console.log('Simultaneous acquisition of campaign membership NFT for A and B is not allowed. ' + member.userId + " . PaleBlueDot.とMETAGARAGEのキャンペーンメンバーシップNFTを同時に取得することはできません。");
+                                console.log('Simultaneous acquisition of campaign membership NFT for A and B is not allowed. ' + member.userId + " . LittleBlueとMETAFORGEのキャンペーンメンバーシップNFTを同時に取得することはできません。");
                                 return {
                                     Success: false,
-                                    Message: 'PaleBlueDot.とMETAGARAGEのキャンペーンメンバーシップNFTを同時に取得することはできません。'
+                                    Message: 'LittleBlueとMETAFORGEのキャンペーンメンバーシップNFTを同時に取得することはできません。'
                                 }
                             }
                         }
@@ -1781,7 +1781,7 @@ export const handler = async (event) => {
                             }
                         }
 
-                        sql = `update "${tableName}" set used_by = '${member.user_id}' , project = 'PALEBLUEDOT', modified_date = '${new Date().toISOString()}' where PK = '${foundCampaignCode.PK}' and SK = '${foundCampaignCode.SK}'`;
+                        sql = `update "${tableName}" set used_by = '${member.user_id}' , project = 'LITTLEBLUE', modified_date = '${new Date().toISOString()}' where PK = '${foundCampaignCode.PK}' and SK = '${foundCampaignCode.SK}'`;
                         txStatements.push({ "Statement": sql});
     
                         sql = `select * from "${tableName}" where type = 'ARTWORK' and PK = 'ARTWORK#${process.env.MEMBER_A_CAMPAIGN_ARTWORK_ID}'`;
@@ -1803,8 +1803,8 @@ export const handler = async (event) => {
 
                         // body.name = "Member #" + newCountDesc;
                         //body.description = 'A Campaign Membership NFT';
-                        body.name = `PaleBlueDot. Membership Card #${nextNftId}`;
-                        body.description = 'Honda Synergy Lab.';
+                        body.name = `LittleBlue Membership Card #${nextNftId}`;
+                        body.description = 'Aurora Synex';
 
                         // // get current counter
                         // let lambdaParams = {
@@ -1837,11 +1837,11 @@ export const handler = async (event) => {
                         let _metadata = [
                             // {
                             //     "trait_type": "Publisher",
-                            //     "value": "Honda Motor Co., Ltd."
+                            //     "value": "Aurora Synex Co., Ltd."
                             // },
                             {
                                 "trait_type": "Community",
-                                "value": "PaleBlueDot."
+                                "value": "LittleBlue"
                             },
                             {
                                 "trait_type": "ID",
@@ -1908,8 +1908,8 @@ export const handler = async (event) => {
 
                         // body.name = "Member #" + newCountDesc;
                         // body.description = 'A Pre-register Membership NFT';
-                        body.name = `PaleBlueDot. Membership Card #${nextNftId}`;
-                        body.description = 'Honda Synergy Lab.';
+                        body.name = `LittleBlue Membership Card #${nextNftId}`;
+                        body.description = 'Aurora Synex';
 
                         // // get current counter
                         // let lambdaParams = {
@@ -1942,11 +1942,11 @@ export const handler = async (event) => {
                         let _metadata = [
                             // {
                             //     "trait_type": "Publisher",
-                            //     "value": "Honda Motor Co., Ltd."
+                            //     "value": "Aurora Synex Co., Ltd."
                             // },
                             {
                                 "trait_type": "Community",
-                                "value": "PaleBlueDot."
+                                "value": "LittleBlue"
                             },
                             {
                                 "trait_type": "ID",
@@ -1979,11 +1979,11 @@ export const handler = async (event) => {
                         body.metadata = _metadata;
                     }
                     else {
-                        console.log("Pre-registration NFT for PaleBlueDot. is fully minted . PaleBlueDot.の事前登録NFTはすべてミントされています。");
+                        console.log("Pre-registration NFT for LittleBlue is fully minted . LittleBlueの事前登録NFTはすべてミントされています。");
 
                         return {
                             Success: false,
-                            Message: "PaleBlueDot.の事前登録NFTはすべてミントされています。"
+                            Message: "LittleBlueの事前登録NFTはすべてミントされています。"
                         }
                     }
                 }
@@ -2016,8 +2016,8 @@ export const handler = async (event) => {
 
                         // body.name = "Member #" + newCountDesc;
                         // body.description = 'A Regular Membership NFT';
-                        body.name = `PaleBlueDot. Membership Card #${nextNftId}`;
-                        body.description = 'Honda Synergy Lab.';
+                        body.name = `LittleBlue Membership Card #${nextNftId}`;
+                        body.description = 'Aurora Synex';
 
                         // // get current counter
                         // let lambdaParams = {
@@ -2050,7 +2050,7 @@ export const handler = async (event) => {
                         let _metadata = [
                             {
                                 "trait_type": "Community",
-                                "value": "PaleBlueDot."
+                                "value": "LittleBlue"
                             },
                             {
                                 "trait_type": "ID",
@@ -2083,18 +2083,18 @@ export const handler = async (event) => {
                         body.metadata = _metadata;
                     }
                     else {
-                        console.log("All NFT are fully minted for project PaleBlueDot. プロジェクトPaleBlueDot.のNFTはすべてミントされています。");
+                        console.log("All NFT are fully minted for project LittleBlue プロジェクトLittleBlueのNFTはすべてミントされています。");
                         return {
                             Success: false,
-                            Message: "プロジェクトPaleBlueDot.のNFTはすべてミントされています。"
+                            Message: "プロジェクトLittleBlueのNFTはすべてミントされています。"
                         }
                     }
                 }
                 else {
-                    console.log('Only member register between 6/18 and 10/31 are eligible for PaleBlueDot. NFT . 6/18から10/31の間に登録したメンバーのみがPaleBlueDot. NFTの対象となります。');
+                    console.log('Only member register between 6/18 and 10/31 are eligible for LittleBlue NFT . 6/18から10/31の間に登録したメンバーのみがLittleBlue NFTの対象となります。');
                     return {
                         Success: false,
-                        Message: '6/18から10/31の間に登録したメンバーのみがPaleBlueDot. NFTの対象となります。'
+                        Message: '6/18から10/31の間に登録したメンバーのみがLittleBlue NFTの対象となります。'
                     }
                 }
             }
@@ -2110,43 +2110,43 @@ export const handler = async (event) => {
         else if(body.nftType === 'MEMBER_B') {
             
             if(member.nft_member_b_asset_name) {
-                console.log('Member already own Membership NFT for project MetaGarage. ' + member.userId + " . メンバーはすでにプロジェクトMETAGARAGEのメンバーシップNFTを所有しています。");
+                console.log('Member already own Membership NFT for project MetaForge. ' + member.userId + " . メンバーはすでにプロジェクトMETAFORGEのメンバーシップNFTを所有しています。");
                 return {
                     Success: false,
-                    Message: 'メンバーはすでにプロジェクトMETAGARAGEのメンバーシップNFTを所有しています。'
+                    Message: 'メンバーはすでにプロジェクトMETAFORGEのメンバーシップNFTを所有しています。'
                 }
             }
 
-            let attempt = 0;
-            while(true) {
+            // let attempt = 0;
+            // while(true) {
                 
-                if(member.survey_completed)
-                    break;
+            //     if(member.survey_completed)
+            //         break;
 
-                let memberResult = await dbClient.send(new ExecuteStatementCommand({Statement: `SELECT * FROM "${tableName}" WHERE PK = '${member.PK}' and SK = '${member.SK}' and type = 'MEMBER'`}))
-                console.log("memberResult", JSON.stringify(memberResult));
-                if(memberResult.Items.length === 0) {
-                    return {
-                        Success: false,
-                        Message: 'member not found',
-                    };
-                }
-                member = memberResult.Items.map(unmarshall)[0];
+            //     let memberResult = await dbClient.send(new ExecuteStatementCommand({Statement: `SELECT * FROM "${tableName}" WHERE PK = '${member.PK}' and SK = '${member.SK}' and type = 'MEMBER'`}))
+            //     console.log("memberResult", JSON.stringify(memberResult));
+            //     if(memberResult.Items.length === 0) {
+            //         return {
+            //             Success: false,
+            //             Message: 'member not found',
+            //         };
+            //     }
+            //     member = memberResult.Items.map(unmarshall)[0];
 
-                await new Promise(r => setTimeout(r, 10000));   // sleep 10 seconds
-                if(attempt >= 6) {
-                    throw new Error('Retry get survey_completed exceeded max retry attempt');
-                }
-                attempt ++;
-            }
+            //     await new Promise(r => setTimeout(r, 10000));   // sleep 10 seconds
+            //     if(attempt >= 6) {
+            //         throw new Error('Retry get survey_completed exceeded max retry attempt');
+            //     }
+            //     attempt ++;
+            // }
 
-            if(!member.survey_completed.includes(process.env.SURVEY_ID_A) && !member.survey_completed.includes(process.env.SURVEY_ID_B)) {
-                console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
-                return {
-                    Success: false,
-                    Message: 'メンバーは関連するアンケートをまだ完了していません。'
-                }
-            }
+            // if(!member.survey_completed.includes(process.env.SURVEY_ID_A) && !member.survey_completed.includes(process.env.SURVEY_ID_B)) {
+            //     console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
+            //     return {
+            //         Success: false,
+            //         Message: 'メンバーは関連するアンケートをまだ完了していません。'
+            //     }
+            // }
 
             if(member.campaign_code) {
                 console.log("campaign code", member.campaign_code);
@@ -2184,10 +2184,10 @@ export const handler = async (event) => {
                                 throw new Error("Missing rarity Attrribute for membership NFT asset name " + member.nft_member_a_asset_name);
                             }
                             if(rarity.value === 'Legend') {
-                                console.log('Simultaneous acquisition of campaign membership NFT for A and B is not allowed. ' + member.userId + " . PaleBlueDot.とMETAGARAGEのキャンペーンメンバーシップNFTを同時に取得することはできません。");
+                                console.log('Simultaneous acquisition of campaign membership NFT for A and B is not allowed. ' + member.userId + " . LittleBlueとMETAFORGEのキャンペーンメンバーシップNFTを同時に取得することはできません。");
                                 return {
                                     Success: false,
-                                    Message: 'PaleBlueDot.とMETAGARAGEのキャンペーンメンバーシップNFTを同時に取得することはできません。'
+                                    Message: 'LittleBlueとMETAFORGEのキャンペーンメンバーシップNFTを同時に取得することはできません。'
                                 }
                             }
                         }
@@ -2221,7 +2221,7 @@ export const handler = async (event) => {
                             }
                         }
     
-                        sql = `update "${tableName}" set used_by = '${member.user_id}' , project = 'METAGARAGE' , modified_date = '${new Date().toISOString()}' where PK = '${foundCampaignCode.PK}' and SK = '${foundCampaignCode.SK}'`;
+                        sql = `update "${tableName}" set used_by = '${member.user_id}' , project = 'METAFORGE' , modified_date = '${new Date().toISOString()}' where PK = '${foundCampaignCode.PK}' and SK = '${foundCampaignCode.SK}'`;
                         txStatements.push({ "Statement": sql});
     
                         sql = `select * from "${tableName}" where type = 'ARTWORK' and PK = 'ARTWORK#${process.env.MEMBER_B_CAMPAIGN_ARTWORK_ID}'`;
@@ -2242,8 +2242,8 @@ export const handler = async (event) => {
 
                         // body.name = "Member #" + newCountDesc;
                         // body.description = 'B Campaign Membership NFT';
-                        body.name = `METAGARAGE Membership Card #${nextNftId}`;
-                        body.description = 'Honda Synergy Lab.';
+                        body.name = `METAFORGE Membership Card #${nextNftId}`;
+                        body.description = 'Aurora Synex';
 
                         txStatements.push({ "Statement": sql});
 
@@ -2278,11 +2278,11 @@ export const handler = async (event) => {
                         let _metadata = [
                             // {
                             //     "trait_type": "Publisher",
-                            //     "value": "Honda Motor Co., Ltd."
+                            //     "value": "Aurora Synex Co., Ltd."
                             // },
                             {
                                 "trait_type": "Community",
-                                "value": "MetaGarage"
+                                "value": "MetaForge"
                             },
                             {
                                 "trait_type": "ID",
@@ -2347,8 +2347,8 @@ export const handler = async (event) => {
                         
                         // body.name = "Member #" + newCountDesc;
                         // body.description = 'B Pre-register Membership NFT';
-                        body.name = `METAGARAGE Membership Card #${nextNftId}`;
-                        body.description = 'Honda Synergy Lab.';
+                        body.name = `METAFORGE Membership Card #${nextNftId}`;
+                        body.description = 'Aurora Synex';
 
                         // // get current counter
                         // let lambdaParams = {
@@ -2381,11 +2381,11 @@ export const handler = async (event) => {
                         let _metadata = [
                             {
                                 "trait_type": "Publisher",
-                                "value": "Honda Motor Co., Ltd."
+                                "value": "Aurora Synex Co., Ltd."
                             },
                             {
                                 "trait_type": "Community",
-                                "value": "MetaGarage"
+                                "value": "MetaForge"
                             },
                             {
                                 "trait_type": "ID",
@@ -2418,11 +2418,11 @@ export const handler = async (event) => {
                         body.metadata = _metadata;
                     }
                     else {
-                        console.log("Pre-registration NFT for MetaGarage is fully minted . METAGARAGEの事前登録NFTはすべてミントされています。");
+                        console.log("Pre-registration NFT for MetaForge is fully minted . METAFORGEの事前登録NFTはすべてミントされています。");
 
                         return {
                             Success: false,
-                            Message: "METAGARAGEの事前登録NFTはすべてミントされています。"
+                            Message: "METAFORGEの事前登録NFTはすべてミントされています。"
                         }
                     }
                 }
@@ -2455,8 +2455,8 @@ export const handler = async (event) => {
 
                         // body.name = "Member #" + newCountDesc;
                         // body.description = 'B Regular Membership NFT';
-                        body.name = `METAGARAGE Membership Card #${nextNftId}`;
-                        body.description = 'Honda Synergy Lab.';
+                        body.name = `METAFORGE Membership Card #${nextNftId}`;
+                        body.description = 'Aurora Synex';
 
                         // // get current counter
                         // let lambdaParams = {
@@ -2489,11 +2489,11 @@ export const handler = async (event) => {
                         let _metadata = [
                             {
                                 "trait_type": "Publisher",
-                                "value": "Honda Motor Co., Ltd."
+                                "value": "Aurora Synex Co., Ltd."
                             },
                             {
                                 "trait_type": "Community",
-                                "value": "MetaGarage"
+                                "value": "MetaForge"
                             },
                             {
                                 "trait_type": "ID",
@@ -2527,18 +2527,18 @@ export const handler = async (event) => {
 
                     }
                     else {
-                        console.log("All NFT for MetaGarage are fully minted . METAGARAGEのすべてのNFTはすべてミントされています。");
+                        console.log("All NFT for MetaForge are fully minted . METAFORGEのすべてのNFTはすべてミントされています。");
                         return {
                             Success: false,
-                            Message: "METAGARAGEのすべてのNFTはすべてミントされています。"
+                            Message: "METAFORGEのすべてのNFTはすべてミントされています。"
                         }
                     }
                 }
                 else {
-                    console.log('Only member register between 6/18 and 10/31 are eligible for MetaGarage NFT . 6/18から10/31の間に登録したメンバーのみがMETAGARAGE NFTの対象となります。');
+                    console.log('Only member register between 6/18 and 10/31 are eligible for MetaForge NFT . 6/18から10/31の間に登録したメンバーのみがMETAFORGE NFTの対象となります。');
                     return {
                         Success: false,
-                        Message: '6/18から10/31の間に登録したメンバーのみがMETAGARAGE NFTの対象となります。'
+                        Message: '6/18から10/31の間に登録したメンバーのみがMETAFORGE NFTの対象となります。'
                     }
                 }
 
@@ -2562,13 +2562,13 @@ export const handler = async (event) => {
                 }
             }
 
-            if(!member.survey_completed || !member.survey_completed.includes(process.env.SURVEY_ID_RACING_FAN)) {
-                console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
-                return {
-                    Success: false,
-                    Message: 'メンバーは関連するアンケートをまだ完了していません。'
-                }
-            }
+            // if(!member.survey_completed || !member.survey_completed.includes(process.env.SURVEY_ID_RACING_FAN)) {
+            //     console.log("Member not yet complete the related survey. メンバーは関連するアンケートをまだ完了していません。");
+            //     return {
+            //         Success: false,
+            //         Message: 'メンバーは関連するアンケートをまだ完了していません。'
+            //     }
+            // }
 
             //todo : set to 2025 so that we can test minting before 2026/02/07
             // todo : set to 2030 as the end date, i.e. all user will Green. then update to gold, platinum, black based on member point
@@ -2593,7 +2593,7 @@ export const handler = async (event) => {
                     txStatements.push({ "Statement": sql});
 
                     body.name = `Racing Fan Membership Card #${nextNftId}`;
-                    body.description = 'Honda Synergy Lab.';
+                    body.description = 'Aurora Synex';
 
                     // // get current counter
                     // let lambdaParams = {
@@ -2681,8 +2681,8 @@ export const handler = async (event) => {
                 image: `https://arweave.net/${uploadResultNFTFolder.img1TxId}`,
                 animation_url: `https://arweave.net/${uploadResultNFTFolder.htmlTxId}`,
                 description: body.description,
-                termsOfService: process.env.TOS_URL,
-                publisher: 'Honda Motor Co., Ltd.',
+                // termsOfService: process.env.TOS_URL,
+                publisher: 'Aurora Synex Co., Ltd.',
                 attributes: body.metadata
             }
             console.log("metadata", metadata);
@@ -2727,8 +2727,8 @@ export const handler = async (event) => {
                 image: `https://arweave.net/${uploadResultNFTFolder.img1TxId}`, 
                 animation_url: `https://arweave.net/${uploadResultNFTFolder.htmlTxId}`,
                 description: body.description,
-                termsOfService: process.env.TOS_URL,
-                publisher: 'Honda Motor Co., Ltd.',
+                //termsOfService: process.env.TOS_URL,
+                publisher: 'Aurora Synex Co., Ltd.',
                 attributes: body.metadata
             }
             console.log("metadata", metadata);
@@ -2771,8 +2771,8 @@ export const handler = async (event) => {
                 image: `https://arweave.net/${uploadResultNFTFolder.img1TxId}`, 
                 animation_url: `https://arweave.net/${uploadResultNFTFolder.htmlTxId}`,
                 description: body.description,
-                termsOfService: process.env.TOS_URL,
-                publisher: 'Honda Motor Co., Ltd.',
+                // termsOfService: process.env.TOS_URL,
+                publisher: 'Aurora Synex Co., Ltd.',
                 attributes: body.metadata
             }
             console.log("metadata", metadata);
@@ -2899,8 +2899,8 @@ export const handler = async (event) => {
                             name: body.name,
                             image: `https://arweave.net/${arTxId}`,
                             description: body.description,
-                            termsOfService: process.env.TOS_URL,
-                            publisher: 'Honda Motor Co., Ltd.',
+                            // termsOfService: process.env.TOS_URL,
+                            publisher: 'Aurora Synex Co., Ltd.',
                             animation_url: arVideoTxId ? `https://arweave.net/${arVideoTxId}` : undefined,
                             attributes: body.metadata
                         };
@@ -2995,7 +2995,7 @@ export const handler = async (event) => {
                         const DISCORD_ROLE_ID_B = (tableName == process.env.TABLE_NAME ? process.env.DISCORD_ROLE_ID_B : process.env.DISCORD_ROLE_ID_B_TEST);
                         
                         // grant proj A discord role
-                        if(body.nftType === 'MEMBER_A' && member.discord_user_id && (member.discord_roles === undefined || !member.discord_roles.split(',').includes('PALEBLUEDOT'))) {
+                        if(body.nftType === 'MEMBER_A' && member.discord_user_id && (member.discord_roles === undefined || !member.discord_roles.split(',').includes('LITTLEBLUE'))) {
 
                             let url = `https://discord.com/api/v8/guilds/${GUILD_ID}/members/${member.discord_user_id}/roles/${DISCORD_ROLE_ID_A}`
                             console.log('grant discord role for proj url', url);
@@ -3011,8 +3011,8 @@ export const handler = async (event) => {
                             console.log("grant discord role for project A result", grantRoleResult);
 
                             // // grant bronze ranking role
-                            // let discordRoleId = (tableName == process.env.TABLE_NAME ? process.env.DISCORD_ROLE_ID_BRONZE_PALEBLUEDOT : process.env.DISCORD_ROLE_ID_BRONZE_PALEBLUEDOT_TEST);
-                            // let discordRoleName = "PALEBLUEDOT_BRONZE";
+                            // let discordRoleId = (tableName == process.env.TABLE_NAME ? process.env.DISCORD_ROLE_ID_BRONZE_LITTLEBLUE : process.env.DISCORD_ROLE_ID_BRONZE_LITTLEBLUE_TEST);
+                            // let discordRoleName = "LITTLEBLUE_BRONZE";
 
                             // if(member.discord_roles === undefined || !member.discord_roles.split(',').includes('BRONZE')) {
                             //     let url = `https://discord.com/api/v8/guilds/${GUILD_ID}/members/${member.discord_user_id}/roles/${discordRoleId}`
@@ -3028,18 +3028,18 @@ export const handler = async (event) => {
                             //                                         });
                             //     console.log("grant discord role for bronze ranking result", grantRoleResult);
 
-                            //     sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',PALEBLUEDOT,' + discordRoleName : 'PALEBLUEDOT,' + discordRoleName}' `;
+                            //     sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',LITTLEBLUE,' + discordRoleName : 'LITTLEBLUE,' + discordRoleName}' `;
                             // }
                             // else {
-                            //     sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',PALEBLUEDOT' : 'PALEBLUEDOT'}' `;
+                            //     sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',LITTLEBLUE' : 'LITTLEBLUE'}' `;
                             // }
 
-                            sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',PALEBLUEDOT' : 'PALEBLUEDOT'}' `;
+                            sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',LITTLEBLUE' : 'LITTLEBLUE'}' `;
 
                         }
 
                         // grant proj B discord role
-                        if(body.nftType === 'MEMBER_B' && member.discord_user_id && (member.discord_roles === undefined || !member.discord_roles.split(',').includes('METAGARAGE'))) {
+                        if(body.nftType === 'MEMBER_B' && member.discord_user_id && (member.discord_roles === undefined || !member.discord_roles.split(',').includes('METAFORGE'))) {
                             let url = `https://discord.com/api/v8/guilds/${GUILD_ID}/members/${member.discord_user_id}/roles/${DISCORD_ROLE_ID_B}`
                             console.log('grant discord role for proj url', url);
                             let _headers = {
@@ -3054,8 +3054,8 @@ export const handler = async (event) => {
                             console.log("grant discord role for project B result", grantRoleResult);
 
                             // // grant bronze ranking role
-                            // let discordRoleId = (tableName == process.env.TABLE_NAME ? process.env.DISCORD_ROLE_ID_BRONZE_METAGARAGE : process.env.DISCORD_ROLE_ID_BRONZE_METAGARAGE_TEST);
-                            // let discordRoleName = "METAGARAGE_BRONZE";
+                            // let discordRoleId = (tableName == process.env.TABLE_NAME ? process.env.DISCORD_ROLE_ID_BRONZE_METAFORGE : process.env.DISCORD_ROLE_ID_BRONZE_METAFORGE_TEST);
+                            // let discordRoleName = "METAFORGE_BRONZE";
 
                             // if(member.discord_roles === undefined || !member.discord_roles.split(',').includes('BRONZE')) {
                             //     let url = `https://discord.com/api/v8/guilds/${GUILD_ID}/members/${member.discord_user_id}/roles/${discordRoleId}`
@@ -3071,13 +3071,13 @@ export const handler = async (event) => {
                             //                                         });
                             //     console.log("grant discord role for bronze ranking result", grantRoleResult);
 
-                            //     sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',METAGARAGE,' + discordRoleName : 'METAGARAGE,' + discordRoleName}' `;
+                            //     sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',METAFORGE,' + discordRoleName : 'METAFORGE,' + discordRoleName}' `;
                             // }
                             // else {
-                            //     sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',METAGARAGE' : 'METAGARAGE'}' `;
+                            //     sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',METAFORGE' : 'METAFORGE'}' `;
                             // }
 
-                            sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',METAGARAGE' : 'METAGARAGE'}' `;
+                            sql += ` , discord_roles = '${member.discord_roles ? member.discord_roles + ',METAFORGE' : 'METAFORGE'}' `;
                             
                         }
                     } catch (err) {

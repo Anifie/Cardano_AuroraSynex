@@ -173,6 +173,7 @@ export const handler = async (event) => {
                                 'user_id': '${memberId}',
                                 'raw_data': '',
                                 'roles': 'MEMBER',
+                                'discord_roles': 'AURORA',
                                 'display_name': '${body.displayName ? body.displayName : 'Anonymous'}',
                                 'aggregate_verifier': '${aggregateVerifier}',
                                 'consent_date': '${body.consentDate ? body.consentDate : ''}',

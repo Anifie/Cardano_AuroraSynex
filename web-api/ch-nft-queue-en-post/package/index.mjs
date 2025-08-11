@@ -244,8 +244,8 @@ export const handler = async (event) => {
         }
         
         // grant NFT202412 discord role
-        if(body.nftType === 'NFT202412' ) {
-            if(member.role != 'ADMIN' && member.discord_user_id && (member.discord_roles === undefined || !member.discord_roles.split(',').includes('NFT202412'))) {
+        if(body.nftType === 'RACINGFAN' ) {
+            if(member.role != 'ADMIN' && member.discord_user_id && (member.discord_roles === undefined || !member.discord_roles.split(',').includes('RACINGFAN'))) {
                 try {
                     const GUILD_ID = configs.find(x => x.key == 'DISCORD_GUILD_ID').value;
                     const BOT_TOKEN = configs.find(x => x.key == 'DISCORD_BOT_TOKEN').value;
@@ -262,10 +262,10 @@ export const handler = async (event) => {
                                                         {
                                                             headers: _headers,
                                                         });
-                    console.log("grant discord role for NFT202412 result", grantRoleResult);
+                    console.log("grant discord role for RACINGFAN result", grantRoleResult);
                     
                     let sql = `update "${tableName}" set modified_date = '${new Date().toISOString()}' , `;
-                    sql += ` discord_roles = '${member.discord_roles ? member.discord_roles + ',NFT202412' : 'NFT202412'}' `;
+                    sql += ` discord_roles = '${member.discord_roles ? member.discord_roles + ',RACINGFAN' : 'RACINGFAN'}' `;
                     sql += ` where PK = '${member.PK}' and SK = '${member.SK}'`;
                     console.log("sql", sql);
                     let updateDiscordRoleResult = await dbClient.send(new ExecuteStatementCommand({Statement: sql}));
@@ -300,7 +300,7 @@ export const handler = async (event) => {
                         const memberNFT = membershipNFTs[i];
                         console.log("memberNFT", memberNFT);
                         
-                        if(memberNFT.store_id == 'HONDA_MEMBERSHIP_B') {
+                        if(memberNFT.store_id == 'AURORA_MEMBERSHIP_B') {
                             if(memberNFT.is_gold === true) {
                                 BStatus = 'GOLD'
                             }
@@ -327,16 +327,16 @@ export const handler = async (event) => {
                         
                         return {
                             Success: false,
-                            Message: 'MetaGarage のメンバーシップ ランキングが無効です'    //Invalid membership ranking for MetaGarage
+                            Message: 'MetaForge のメンバーシップ ランキングが無効です'    //Invalid membership ranking for MetaForge
                         };
                     }
 
-                    if(member.SK == 'MEMBERWALLET#0x9b4380e74eCecf9B8c84393809A55c85D238fD3C') {
-                        maxNFT = 9;
-                    }
-                    else if(member.SK == 'MEMBERWALLET#0x59D5993B49a44dAc3cd9911284E21746C97B55C0') {
-                        maxNFT = 16;
-                    }
+                    // if(member.SK == 'MEMBERWALLET#0x9b4380e74eCecf9B8c84393809A55c85D238fD3C') {
+                    //     maxNFT = 9;
+                    // }
+                    // else if(member.SK == 'MEMBERWALLET#0x59D5993B49a44dAc3cd9911284E21746C97B55C0') {
+                    //     maxNFT = 16;
+                    // }
 
                     if(successQueueItems.length + 1 > maxNFT) {
                         console.log("Maximum number of NFTs exceeded for your membership ranking. メンバーシップランキングのNFTの最大数を超えました。");
@@ -355,9 +355,9 @@ export const handler = async (event) => {
                         memberWhiteLists = memberWhitelistResult.Items.map(unmarshall);
                     }
 
-                    if(memberWhiteLists.find(x => x.whitelist_type.includes('PALEBLUEDOT_ADDITIONAL_NFT'))) {
+                    if(memberWhiteLists.find(x => x.whitelist_type.includes('LITTLEBLUE_ADDITIONAL_NFT'))) {
 
-                        // member in PALEBLUEDOT_ADDITIONAL_NFT dont have to check status
+                        // member in LITTLEBLUE_ADDITIONAL_NFT dont have to check status
 
                         // let queueItems = queueResult.Items.map(unmarshall);
 
@@ -464,13 +464,13 @@ export const handler = async (event) => {
                     }
 
                     let maxRevealCount = 1;
-                    if(memberWhiteLists.find(x => x.whitelist_type.includes('PALEBLUEDOT_WINNER'))) {
+                    if(memberWhiteLists.find(x => x.whitelist_type.includes('LITTLEBLUE_WINNER'))) {
                         maxRevealCount = 2;
                     }
 
                     if(asset.reveal_count === undefined || asset.reveal_count < maxRevealCount) {
 
-                        if(memberWhiteLists.find(x => x.whitelist_type.includes('PALEBLUEDOT_ADDITIONAL_NFT'))) {
+                        if(memberWhiteLists.find(x => x.whitelist_type.includes('LITTLEBLUE_ADDITIONAL_NFT'))) {
                             let queueItems = queueResult.Items.map(unmarshall);
                             let existedQueueItems = queueItems.filter(x => x.unit == body.unit);
                             

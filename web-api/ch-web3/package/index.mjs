@@ -36,7 +36,7 @@ const blockchainProvider = new BlockfrostProvider(process.env.BLOCKFROST_PROJECT
 const mnemonicArray = process.env.ADMIN_WALLET_MNEMONIC.split(" "); //mnemonic.split(" ");
 // console.log("mnemonicArray", mnemonicArray);
 const adminCardanoWallet = new MeshWallet({
-    networkId: 0,
+    networkId: 1,   //0 is testnet, 1 is mainnet
     fetcher: blockchainProvider,
     submitter: blockchainProvider,
     key: {
@@ -50,7 +50,7 @@ const blockchainProviderTest = new BlockfrostProvider(process.env.BLOCKFROST_PRO
 const mnemonicArrayTest = process.env.ADMIN_WALLET_MNEMONIC_TEST.split(" "); //mnemonic.split(" ");
 // console.log("mnemonicArray", mnemonicArray);
 const adminCardanoWalletTest = new MeshWallet({
-    networkId: 0,
+    networkId: 1,   //0 is testnet, 1 is mainnet
     fetcher: blockchainProviderTest,
     submitter: blockchainProviderTest,
     key: {
@@ -59,6 +59,36 @@ const adminCardanoWalletTest = new MeshWallet({
     },
 });
 // console.log("adminCardanoWalletTest", adminCardanoWalletTest);
+
+
+const KOIOS_MAINNET = 'https://api.koios.rest/api/v1';
+
+async function getWalletBalance(address) {
+  try {
+    const response = await axios.post(`${KOIOS_MAINNET}/address_info`, {
+      _addresses: [address]
+    }, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    const data = response.data;
+
+    if (!data.length) {
+      console.log('No balance found for this address.');
+      return;
+    }
+
+    const lovelace = data[0].balance;
+    const ada = Number(lovelace) / 1_000_000;
+
+    console.log(`Balance: ${ada} ADA`);
+    return ada;
+  } catch (error) {
+    console.error('Error fetching wallet balance:', error);
+  }
+}
 
 export const handler = async (event) => {
 
@@ -372,7 +402,8 @@ async function RevokeRacingFanNFT(unit, isTest) {
 
 async function fetchTxStatus(txHash, isTest) {
     try {
-        const response = await axios.get(`https://cardano-preview.blockfrost.io/api/v0/txs/${txHash}`, {
+        //const response = await axios.get(`https://cardano-preview.blockfrost.io/api/v0/txs/${txHash}`, {
+        const response = await axios.get(`https://cardano-mainnet.blockfrost.io/api/v0/txs/${txHash}`, {
             headers: { project_id: isTest ? process.env.BLOCKFROST_PROJECT_ID_TEST : process.env.BLOCKFROST_PROJECT_ID },
         });
 
@@ -487,6 +518,9 @@ async function MintNFT68(toAddress, metadata, isTest) {
     let wallet = isTest ? adminCardanoWalletTest : adminCardanoWallet;
     let adminAddr = await wallet.getChangeAddress();
     console.log("adminAddr", adminAddr);
+
+    let balance = await getWalletBalance(adminAddr);
+    console.log("balance", balance);
     
     if(typeof _metadata !== 'object') {
         _metadata = JSON.parse(_metadata);
@@ -833,7 +867,8 @@ async function isTxConfirmed(txHash) {
     // preview.koios.rest works only for the preview testnet.
 	// For mainnet, use https://api.koios.rest/api/v1/tx_status.
 	// If you need full metadata or UTxOs, Koios also supports that.
-    const response = await axios.post('https://preview.koios.rest/api/v1/tx_status', {
+    //const response = await axios.post('https://preview.koios.rest/api/v1/tx_status', {
+    const response = await axios.post('https://api.koios.rest/api/v1/tx_status', {
       _tx_hashes: [txHash]
     });
 

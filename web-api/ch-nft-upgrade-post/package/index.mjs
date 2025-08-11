@@ -365,55 +365,55 @@ export const handler = async (event) => {
                 newRank = 'Silver';
                 if(rarity == 'Legend') {
                     switch (community) {
-                        case 'PaleBlueDot.':
+                        case 'LittleBlue':
                             artworkId = process.env.MEMBER_A_CAMPAIGN_SILVER_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_A_CAMPAIGN_SILVER_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_SILVER_PALEBLUEDOT';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_PALEBLUEDOT_TEST : process.env.DISCORD_ROLE_ID_SILVER_PALEBLUEDOT);
-                            discordRoleName = "PALEBLUEDOT_SILVER";
+                            whitelistType = 'WHITELIST_MEMBER_SILVER_LITTLEBLUE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_LITTLEBLUE_TEST : process.env.DISCORD_ROLE_ID_SILVER_LITTLEBLUE);
+                            discordRoleName = "LITTLEBLUE_SILVER";
                             break;
-                        case 'MetaGarage':
+                        case 'MetaForge':
                             artworkId = process.env.MEMBER_B_CAMPAIGN_SILVER_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_B_CAMPAIGN_SILVER_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_SILVER_METAGARAGE';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_METAGARAGE_TEST : process.env.DISCORD_ROLE_ID_SILVER_METAGARAGE);
-                            discordRoleName = "METAGARAGE_SILVER";
+                            whitelistType = 'WHITELIST_MEMBER_SILVER_METAFORGE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_METAFORGE_TEST : process.env.DISCORD_ROLE_ID_SILVER_METAFORGE);
+                            discordRoleName = "METAFORGE_SILVER";
                             break;
                     }
                 }
                 else if(rarity == 'Common' && title == 'Innovator') {
                     switch (community) {
-                        case 'PaleBlueDot.':
+                        case 'LittleBlue':
                             artworkId = process.env.MEMBER_A_PRE_REGISTER_SILVER_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_A_PRE_REGISTER_SILVER_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_SILVER_PALEBLUEDOT';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_PALEBLUEDOT_TEST : process.env.DISCORD_ROLE_ID_SILVER_PALEBLUEDOT);
-                            discordRoleName = "PALEBLUEDOT_SILVER";
+                            whitelistType = 'WHITELIST_MEMBER_SILVER_LITTLEBLUE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_LITTLEBLUE_TEST : process.env.DISCORD_ROLE_ID_SILVER_LITTLEBLUE);
+                            discordRoleName = "LITTLEBLUE_SILVER";
                             break;
-                        case 'MetaGarage':
+                        case 'MetaForge':
                             artworkId = process.env.MEMBER_B_PRE_REGISTER_SILVER_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_B_PRE_REGISTER_SILVER_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_SILVER_METAGARAGE';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_METAGARAGE_TEST : process.env.DISCORD_ROLE_ID_SILVER_METAGARAGE);
-                            discordRoleName = "METAGARAGE_SILVER";
+                            whitelistType = 'WHITELIST_MEMBER_SILVER_METAFORGE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_METAFORGE_TEST : process.env.DISCORD_ROLE_ID_SILVER_METAFORGE);
+                            discordRoleName = "METAFORGE_SILVER";
                             break;
                     }
                 }
                 else if(rarity == 'Common' && (title == 'Assosiate' || title == 'Associate')) {
                     switch (community) {
-                        case 'PaleBlueDot.':
+                        case 'LittleBlue':
                             artworkId = process.env.MEMBER_A_POST_REGISTER_SILVER_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_A_POST_REGISTER_SILVER_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_SILVER_PALEBLUEDOT';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_PALEBLUEDOT_TEST : process.env.DISCORD_ROLE_ID_SILVER_PALEBLUEDOT);
-                            discordRoleName = "PALEBLUEDOT_SILVER";
+                            whitelistType = 'WHITELIST_MEMBER_SILVER_LITTLEBLUE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_LITTLEBLUE_TEST : process.env.DISCORD_ROLE_ID_SILVER_LITTLEBLUE);
+                            discordRoleName = "LITTLEBLUE_SILVER";
                             break;
-                        case 'MetaGarage':
+                        case 'MetaForge':
                             artworkId = process.env.MEMBER_B_POST_REGISTER_SILVER_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_B_POST_REGISTER_SILVER_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_SILVER_METAGARAGE';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_METAGARAGE_TEST : process.env.DISCORD_ROLE_ID_SILVER_METAGARAGE);
-                            discordRoleName = "METAGARAGE_SILVER";
+                            whitelistType = 'WHITELIST_MEMBER_SILVER_METAFORGE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_SILVER_METAFORGE_TEST : process.env.DISCORD_ROLE_ID_SILVER_METAFORGE);
+                            discordRoleName = "METAFORGE_SILVER";
                             break;
                     }
                 }
@@ -423,55 +423,55 @@ export const handler = async (event) => {
                 newRank = 'Gold';
                 if(rarity == 'Legend') {
                     switch (community) {
-                        case 'PaleBlueDot.':
+                        case 'LittleBlue':
                             artworkId = process.env.MEMBER_A_CAMPAIGN_GOLD_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_A_CAMPAIGN_GOLD_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_GOLD_PALEBLUEDOT';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_PALEBLUEDOT_TEST : process.env.DISCORD_ROLE_ID_GOLD_PALEBLUEDOT);
-                            discordRoleName = "PALEBLUEDOT_GOLD";
+                            whitelistType = 'WHITELIST_MEMBER_GOLD_LITTLEBLUE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_LITTLEBLUE_TEST : process.env.DISCORD_ROLE_ID_GOLD_LITTLEBLUE);
+                            discordRoleName = "LITTLEBLUE_GOLD";
                             break;
-                        case 'MetaGarage':
+                        case 'MetaForge':
                             artworkId = process.env.MEMBER_B_CAMPAIGN_GOLD_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_B_CAMPAIGN_GOLD_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_GOLD_METAGARAGE';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_METAGARAGE_TEST : process.env.DISCORD_ROLE_ID_GOLD_METAGARAGE);
-                            discordRoleName = "METAGARAGE_GOLD";
+                            whitelistType = 'WHITELIST_MEMBER_GOLD_METAFORGE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_METAFORGE_TEST : process.env.DISCORD_ROLE_ID_GOLD_METAFORGE);
+                            discordRoleName = "METAFORGE_GOLD";
                             break;
                     }
                 }
                 else if(rarity == 'Common' && title == 'Innovator') {
                     switch (community) {
-                        case 'PaleBlueDot.':
+                        case 'LittleBlue':
                             artworkId = process.env.MEMBER_A_PRE_REGISTER_GOLD_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_A_PRE_REGISTER_GOLD_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_GOLD_PALEBLUEDOT';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_PALEBLUEDOT_TEST : process.env.DISCORD_ROLE_ID_GOLD_PALEBLUEDOT);
-                            discordRoleName = "PALEBLUEDOT_GOLD";
+                            whitelistType = 'WHITELIST_MEMBER_GOLD_LITTLEBLUE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_LITTLEBLUE_TEST : process.env.DISCORD_ROLE_ID_GOLD_LITTLEBLUE);
+                            discordRoleName = "LITTLEBLUE_GOLD";
                             break;
-                        case 'MetaGarage':
+                        case 'MetaForge':
                             artworkId = process.env.MEMBER_B_PRE_REGISTER_GOLD_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_B_PRE_REGISTER_GOLD_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_GOLD_METAGARAGE';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_METAGARAGE_TEST : process.env.DISCORD_ROLE_ID_GOLD_METAGARAGE);
-                            discordRoleName = "METAGARAGE_GOLD";
+                            whitelistType = 'WHITELIST_MEMBER_GOLD_METAFORGE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_METAFORGE_TEST : process.env.DISCORD_ROLE_ID_GOLD_METAFORGE);
+                            discordRoleName = "METAFORGE_GOLD";
                             break;
                     }
                 }
                 else if(rarity == 'Common' && (title == 'Assosiate' || title == 'Associate')) {
                     switch (community) {
-                        case 'PaleBlueDot.':
+                        case 'LittleBlue':
                             artworkId = process.env.MEMBER_A_POST_REGISTER_GOLD_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_A_POST_REGISTER_GOLD_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_GOLD_PALEBLUEDOT';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_PALEBLUEDOT_TEST : process.env.DISCORD_ROLE_ID_GOLD_PALEBLUEDOT);
-                            discordRoleName = "PALEBLUEDOT_GOLD";
+                            whitelistType = 'WHITELIST_MEMBER_GOLD_LITTLEBLUE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_LITTLEBLUE_TEST : process.env.DISCORD_ROLE_ID_GOLD_LITTLEBLUE);
+                            discordRoleName = "LITTLEBLUE_GOLD";
                             break;
-                        case 'MetaGarage':
+                        case 'MetaForge':
                             artworkId = process.env.MEMBER_B_POST_REGISTER_GOLD_ARTWORK_ID;
                             artworkIdV2 = isDoubleSided ?  process.env.MEMBER_B_POST_REGISTER_GOLD_ARTWORK_ID_V2 : undefined;
-                            whitelistType = 'WHITELIST_MEMBER_GOLD_METAGARAGE';
-                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_METAGARAGE_TEST : process.env.DISCORD_ROLE_ID_GOLD_METAGARAGE);
-                            discordRoleName = "METAGARAGE_GOLD";
+                            whitelistType = 'WHITELIST_MEMBER_GOLD_METAFORGE';
+                            discordRoleId = (tableName == process.env.TABLE_NAME_TEST ? process.env.DISCORD_ROLE_ID_GOLD_METAFORGE_TEST : process.env.DISCORD_ROLE_ID_GOLD_METAFORGE);
+                            discordRoleName = "METAFORGE_GOLD";
                             break;
                     }
                 }

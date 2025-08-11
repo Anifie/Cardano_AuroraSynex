@@ -447,10 +447,10 @@ export const handler = async (event) => {
             }
 
             if(member.nft_member_b_token_id === undefined || member.nft_member_b_token_id === '') {
-                console.log("You are not member of MetaGarage . あなたはMetaGarageのメンバーではありません");
+                console.log("You are not member of MetaForge . あなたはMetaForgeのメンバーではありません");
                 return {
                     Success: false,
-                    Message: 'あなたはMetaGarageのメンバーではありません'   //You are not member of MetaGarage
+                    Message: 'あなたはMetaForgeのメンバーではありません'   //You are not member of MetaForge
                 }
             }
         }

@@ -258,7 +258,7 @@ export const handler = async (event) => {
 
                 // update member campagin code
                 if(!member.campaign_code) {
-                    let project = (body.surveyId == process.env.CAMPAIGN_CODE_SURVEY_ID_A ? 'PALEBLUEDOT' : 'METAGARAGE');
+                    let project = (body.surveyId == process.env.CAMPAIGN_CODE_SURVEY_ID_A ? 'LITTLEBLUE' : 'METAFORGE');
 
                     sql = `update "${tableName}" set campaign_code = '${body.offeredAnswerText}', campaign_code_project = '${project}' where PK = '${member.PK}' and SK = '${member.SK}'`;
                     let updateMemberCampaignCodeResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
