@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "jsonwebtoken": "^9.0.2",
-    "ulid": "^2.3.0"
-  }
-}

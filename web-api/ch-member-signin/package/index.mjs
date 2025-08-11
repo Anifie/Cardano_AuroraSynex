@@ -155,52 +155,7 @@ export const handler = async (event) => {
         let memberResult = await dbClient.send(new ExecuteStatementCommand({ Statement: sql }));
         if (memberResult.Items.length === 0) {
 
-            console.log('inserting new member');
-
-            let txStatements = [];
-
-            sql = `INSERT INTO "${tableName}" 
-                            VALUE {
-                                'PK': '${'MEMBER#' + memberId}',
-                                'SK': '${'MEMBERWALLET#' + body.walletAddress}',
-                                'type': 'MEMBER',
-                                'wallet_address': '${body.walletAddress}',
-                                'biodata': '',
-                                'banner_uri': '',
-                                'email': '',
-                                'phone': '',
-                                'avatar_uri': 'https://i.pravatar.cc/150?u=${memberId}',
-                                'user_id': '${memberId}',
-                                'raw_data': '',
-                                'roles': 'MEMBER',
-                                'discord_roles': 'AURORA',
-                                'display_name': '${body.displayName ? body.displayName : 'Anonymous'}',
-                                'aggregate_verifier': '${aggregateVerifier}',
-                                'consent_date': '${body.consentDate ? body.consentDate : ''}',
-                                'created_date': '${new Date().toISOString()}'
-                            }`;
-
-            console.log(sql);
-
-            txStatements.push({ "Statement": sql});
-
-            sql = `insert into "${tableName}" value { 'PK': 'ROLE#MEMBER' , 'SK': 'MEMBER#${memberId}' , 'type': 'ROLE_MEMBER' , 'role_name': 'MEMBER', 'user_id': '${memberId}', 'wallet_address': '${body.walletAddress}', 'created_date': '${new Date().toISOString()}'}`
-            txStatements.push({ "Statement": sql});
-
-            const statements = { "TransactStatements": txStatements };  
-            console.log("statements", JSON.stringify(statements));
-            const dbTxResult = await dbClient.send(new ExecuteTransactionCommand(statements));
-            console.log("insert member tx dbResult", dbTxResult);
-
-            // get from DB again
-            const profileResult = await dbClient.send(new ExecuteStatementCommand({
-                                                                Statement: `
-                                                                    SELECT * FROM "${tableName}" WHERE PK = ?
-                                                                `,
-                                                                Parameters: [{ S: 'MEMBER#' + memberId }],
-                                                            }));
-
-            let _profile = ToMemberViewModel(profileResult.Items.map(unmarshall)[0]);
+            ...
 
             const _response = {
                 Success: true,
@@ -222,71 +177,7 @@ export const handler = async (event) => {
 
             member = memberResult.Items.map(unmarshall)[0];
 
-            if(member.avatar_uri === '' || member.avatar_uri === undefined) {
-                let sql = `update "${tableName}" set avatar_uri = 'https://i.pravatar.cc/150?u=${member.user_id}' where PK = '${member.PK}' and SK = '${member.SK}'`;
-                let updAvatarResult = await dbClient.send(new ExecuteStatementCommand({Statement: sql}))
-                console.log('updAvatarResult', updAvatarResult);
-            }
-
-            if((member.display_name == 'Anonymous' || !member.display_name) && body.displayName) {
-                let sql = `update "${tableName}" set display_name = '${body.displayName}' where PK = '${member.PK}' and SK = '${member.SK}'`;
-                let updDisplayNameResult = await dbClient.send(new ExecuteStatementCommand({Statement: sql}))
-                console.log('updDisplayNameResult', updDisplayNameResult);
-            }
-
-            if(member.roles === undefined) {
-                console.log("add the default role MEMBER");
-                let sql = `update "${tableName}" set roles = 'MEMBER' where PK = '${member.PK}' and SK = '${member.SK}'`;
-                let updRoleResult = await dbClient.send(new ExecuteStatementCommand({Statement: sql}))
-                console.log('updRoleResult', updRoleResult);
-
-                sql = `insert into "${tableName}" value { 'PK': 'ROLE#MEMBER' , 'SK': '${member.PK}' , 'type': 'ROLE_MEMBER' , 'role_name': 'MEMBER', 'user_id': '${member.user_id}', 'wallet_address': '${member.wallet_address}', 'created_date': '${new Date().toISOString()}'}`
-                let insertRoleMemberResult = await dbClient.send(new ExecuteStatementCommand({Statement: sql}))
-                console.log('insertRoleMemberResult', insertRoleMemberResult);
-            }
-
-            let discordUser;
-
-            if(member.discord_user_id) { 
-
-                // get discord global name
-                try {
-                        
-                    const GUILD_ID = configs.find(x => x.key == 'DISCORD_GUILD_ID').value;
-                    const BOT_TOKEN = configs.find(x => x.key == 'DISCORD_BOT_TOKEN').value;
-
-                    let url = `https://discord.com/api/v10/guilds/${GUILD_ID}/members/${member.discord_user_id}`
-                    console.log('get discord user url', url);
-                    let _headers = {
-                                        "Authorization": `Bot ${BOT_TOKEN}`,
-                                        "Content-Type": "application/json"
-                                    };
-                    let userResult = await axios.get(url,
-                                                        {
-                                                            headers: _headers,
-                                                        });
-                    console.log("get discord user result", userResult);
-        
-                    discordUser = userResult.data;
-                    
-                } catch (err) {
-                    console.log(err);
-                    const _message = {
-                        Subject: 'Honda Error - ch-member-signin',
-                        Message: "failed to get discord user " + member.discord_user_id,
-                        TopicArn: configs.find(x => x.key == 'SNS_TOPIC_ERROR').value
-                    };
-                    await snsClient.send(new PublishCommand(_message));
-                }
-
-                if(discordUser && discordUser.user.global_name && discordUser.user.global_name != member.display_name) {
-                    let sql = `update "${tableName}" set display_name = '${discordUser.user.global_name}' where PK = '${member.PK}' and SK = '${member.SK}'`;
-                    let updateDisplayNameResult = await dbClient.send(new ExecuteStatementCommand({Statement: sql}));
-                    console.log("syncDiscordNameToWidgetBotResult", updateDisplayNameResult);
-                }
-
-            }
-
+            ...
 
             let _profile = ToMemberViewModel(member);
 
